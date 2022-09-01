@@ -4,15 +4,34 @@
 #include <QDebug>
 #include <QLocale>
 #include <QTranslator>
+#include <QtCore/QStandardPaths>
 #include <opencv2/opencv.hpp>
+#include "androidfile.h"
+
+#ifdef Android_Platform
+#include <QtAndroid>
+#endif
 
 int main(int argc, char *argv[])
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
+#ifdef ANDROID_PLATFORM
+    // 权限申请
+    QString strPermission = "android.permission.READ_EXTERNAL_STORAGE";
+    QtAndroid::requestPermissionsSync(QStringList() << strPermission);
+#endif
+#ifdef ANDROID_PLATFORM
+    const QStringList m_currentDir = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+    qDebug() << "Android writable location ... " + QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+#elif IOS_PLATFORM
+    const QStringList m_currentDir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+#endif
 
     QGuiApplication app(argc, argv);
+    // qml register
+    qmlRegisterType<AndroidFile>("com.permission.module", 1, 0, "AndPermission");
 
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
