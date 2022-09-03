@@ -11,6 +11,11 @@ public:
     ~PreviewProvider();
     QPixmap requestPixmap(const QString &id, QSize *size, const QSize &requestedSize);  //重写requestPixmap函数
     QImage requestImage(const QString & id, QSize * size, const QSize & requestedSize); //重写requestImage函数
+
+    QString addSuffix2FileName(const QString fileName, const QString suffix);
+
+private:
+    QImage img_result;
 };
 
 #endif // PREVIEWPROVIDER_H
