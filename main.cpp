@@ -7,6 +7,7 @@
 #include <QtCore/QStandardPaths>
 #include <opencv2/opencv.hpp>
 #include "androidfile.h"
+#include "previewprovider.h"
 
 #ifdef Android_Platform
 #include <QtAndroid>
@@ -42,8 +43,13 @@ int main(int argc, char *argv[])
             break;
         }
     }
+    // image provider 1
+    PreviewProvider *imageProvider = new PreviewProvider(QQmlImageProviderBase::Image);
 
     QQmlApplicationEngine engine;
+    // image provider 2
+    engine.addImageProvider("previewprovider", imageProvider);
+
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {

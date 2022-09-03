@@ -34,12 +34,18 @@ set(QC_ANDROIDFILE_SOURCE
     androidfile.h
     androidfile.cpp
 )
+set(
+    QC_UTILS_SOURCE
+    previewprovider.h
+    previewprovider.cpp
+)
 
 set(PROJECT_SOURCES
         main.cpp
         qml.qrc
         ${TS_FILES}
         ${QC_ANDROIDFILE_SOURCE}
+        ${QC_UTILS_SOURCE}
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

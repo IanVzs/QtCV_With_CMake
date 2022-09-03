@@ -41,12 +41,20 @@ ApplicationWindow {
             }
         }
     }
-//    Button {
-//        id: andPermission_msg
-//        text: "niubile"
-//    }
+    Button {
+        id: btn_Gray
+        y: 100
+        text: "转为灰图"
+        onClicked: {
+//            andPermission.name = "yijingxiugai"
+            img111.source = ""
+            img111.source = "image://previewprovider/" + file_dialog.fileUrl
+        }
+    }
     Image {
+        z: -1
         id: img111
+        cache: false
         source: ""
     }
     AndPermission {

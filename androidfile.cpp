@@ -1,6 +1,7 @@
 #include<QDebug>
 
 #include "androidfile.h"
+#include "previewprovider.h"
 
 AndroidFile::AndroidFile(QObject *parent) : QObject(parent)
   ,myName("none")
