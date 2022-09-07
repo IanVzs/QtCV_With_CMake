@@ -82,6 +82,7 @@ QString PaintItem::addSuffix2FileName(const QString fileName, const QString suff
 {
     QString newName = fileName;
     char len = fileName.length();
+    newName = newName.toLower();
     if (newName.endsWith(".jpg")) {
         newName = newName.replace(len-4, len-1, suffix + ".jpg");
     } else if (fileName.endsWith(".png")) {
