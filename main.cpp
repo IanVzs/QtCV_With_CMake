@@ -31,8 +31,10 @@ int main(int argc, char *argv[])
 #endif
 
     QGuiApplication app(argc, argv);
+    QCoreApplication::setOrganizationName("Some organization");// close filedialog warning
     // qml register
     qmlRegisterType<AndroidFile>("com.permission.module", 1, 0, "AndPermission");
+    qmlRegisterType<PaintItem>("com.paintitem.module", 1, 0, "PaintItem");
 
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
@@ -44,11 +46,12 @@ int main(int argc, char *argv[])
         }
     }
     // image provider 1
-    PreviewProvider *imageProvider = new PreviewProvider(QQmlImageProviderBase::Image);
+//    PreviewProvider *imageProvider = new PreviewProvider(QQmlImageProviderBase::Image);
+
 
     QQmlApplicationEngine engine;
     // image provider 2
-    engine.addImageProvider("previewprovider", imageProvider);
+//    engine.addImageProvider("previewprovider", imageProvider);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

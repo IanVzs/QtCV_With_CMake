@@ -4,8 +4,13 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="main.qml" line="12"/>
+        <location filename="main.qml" line="13"/>
         <source>Hello World</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="main.qml" line="84"/>
+        <source>text</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
